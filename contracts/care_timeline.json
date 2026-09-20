@@ -1,0 +1,16 @@
+{
+  "service": "icu-family-evidence",
+  "source_context": "http://ent.people.com.cn/n1/2026/0917/c1012-40800234.html",
+  "sample": {
+    "case_id": "CASE-ICU-12D",
+    "stay": {
+      "ward": "ICU",
+      "days": 12
+    },
+    "event": {
+      "kind": "urgent_consent",
+      "source": "hospital_notice",
+      "occurred_at": "2025-06-03T02:14:00+08:00"
+    }
+  }
+}

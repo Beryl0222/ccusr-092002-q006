@@ -1,0 +1,11 @@
+{
+  "name": "icu-family-evidence",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "整理重症救治期间家属待命、文书签署和院外事务的证据时间线。",
+  "scripts": {
+    "check": "node src/service.js --check",
+    "test": "node --test"
+  }
+}
