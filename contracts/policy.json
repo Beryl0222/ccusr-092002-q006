@@ -1,0 +1,122 @@
+{
+  "service": "icu-family-evidence",
+  "description": "照护假制度契约：按生效日版本化；跨版本区间按本地日拆分，各日适用当期制度。额度按本地日历日计，金额按实际申报且凭证覆盖的分钟计。",
+  "timezone_offset_minutes": 480,
+  "leave_kinds": {
+    "icu_care_leave": "重症照护假（须现场；ICU窗口或紧急文书事件支持）",
+    "family_care_leave": "家庭照护假（转院/出院/手续办理）",
+    "standby_duty": "院方待命（不计缺勤）",
+    "remote_work": "远程办公（远程办理手续/转院协调）",
+    "annual_leave": "年假（与照护时段重叠时优先按年假，不另增照护假）",
+    "personal_affairs": "事假（无凭证或额度用尽时的兜底）"
+  },
+  "rule_fields": {
+    "max_calendar_days": "每个制度版本下该假别的本地日历日额度上限；缺省表示不限",
+    "pay_rate": "付薪比例，0~1",
+    "daily_hours_cap": "单本地日计薪小时上限，跨午夜按日分别封顶",
+    "eligible_events": "可支持该假别的凭证事件类型；* 表示任意",
+    "remote_eligible": "是否接受远程在场方式",
+    "remote_required": "是否必须为远程在场方式"
+  },
+  "versions": [
+    {
+      "id": "POL-2025",
+      "title": "员工家属重症照护假管理办法（2025版）",
+      "effective_from": "2025-01-01T00:00:00+08:00",
+      "rules": [
+        {
+          "kind": "icu_care_leave",
+          "max_calendar_days": 5,
+          "pay_rate": 1.0,
+          "daily_hours_cap": 24,
+          "remote_eligible": false,
+          "eligible_events": ["admission", "critical_notice", "urgent_consent", "standby_request"]
+        },
+        {
+          "kind": "family_care_leave",
+          "max_calendar_days": 3,
+          "pay_rate": 0.8,
+          "daily_hours_cap": 8,
+          "remote_eligible": true,
+          "eligible_events": ["discharge", "transfer", "document_handling"]
+        },
+        {
+          "kind": "standby_duty",
+          "pay_rate": 1.0,
+          "daily_hours_cap": 24,
+          "remote_eligible": true,
+          "eligible_events": ["standby_request"]
+        },
+        {
+          "kind": "annual_leave",
+          "pay_rate": 1.0,
+          "daily_hours_cap": 8,
+          "eligible_events": "*"
+        },
+        {
+          "kind": "remote_work",
+          "pay_rate": 1.0,
+          "daily_hours_cap": 8,
+          "remote_required": true,
+          "eligible_events": ["document_handling", "transfer"]
+        },
+        {
+          "kind": "personal_affairs",
+          "pay_rate": 0,
+          "daily_hours_cap": 8,
+          "eligible_events": "*"
+        }
+      ]
+    },
+    {
+      "id": "POL-2026",
+      "title": "员工家属重症照护假管理办法（2026版）",
+      "effective_from": "2026-01-01T00:00:00+08:00",
+      "changes": "重症照护假额度由5日增至7日；转院事件纳入重症照护假；家庭照护假额度增至4日。",
+      "rules": [
+        {
+          "kind": "icu_care_leave",
+          "max_calendar_days": 7,
+          "pay_rate": 1.0,
+          "daily_hours_cap": 24,
+          "remote_eligible": false,
+          "eligible_events": ["admission", "critical_notice", "urgent_consent", "standby_request", "transfer"]
+        },
+        {
+          "kind": "family_care_leave",
+          "max_calendar_days": 4,
+          "pay_rate": 0.8,
+          "daily_hours_cap": 8,
+          "remote_eligible": true,
+          "eligible_events": ["discharge", "transfer", "document_handling"]
+        },
+        {
+          "kind": "standby_duty",
+          "pay_rate": 1.0,
+          "daily_hours_cap": 24,
+          "remote_eligible": true,
+          "eligible_events": ["standby_request"]
+        },
+        {
+          "kind": "annual_leave",
+          "pay_rate": 1.0,
+          "daily_hours_cap": 8,
+          "eligible_events": "*"
+        },
+        {
+          "kind": "remote_work",
+          "pay_rate": 1.0,
+          "daily_hours_cap": 8,
+          "remote_required": true,
+          "eligible_events": ["document_handling", "transfer"]
+        },
+        {
+          "kind": "personal_affairs",
+          "pay_rate": 0,
+          "daily_hours_cap": 8,
+          "eligible_events": "*"
+        }
+      ]
+    }
+  ]
+}

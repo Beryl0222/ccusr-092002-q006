@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "整理重症救治期间家属待命、文书签署和院外事务的证据时间线。",
+  "description": "医院/见证方签发最小化照护凭证，企业侧按当期制度核验照护假、版本化调账与角色隔离。",
   "scripts": {
     "check": "node src/service.js --check",
+    "start": "node src/service.js",
     "test": "node --test"
   }
 }

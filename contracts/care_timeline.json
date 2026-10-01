@@ -1,16 +1,96 @@
 {
   "service": "icu-family-evidence",
   "source_context": "http://ent.people.com.cn/n1/2026/0917/c1012-40800234.html",
+  "description": "公开领域样例：约定医院/见证方提交的事件名称与层级。仅含流程性事实（区间、文书、手续），不含诊断、检查或治疗内容；所有标识均为演示伪名。",
+  "timezone_offset_minutes": 480,
+  "event_kinds": {
+    "admission": "入院",
+    "discharge": "出院",
+    "transfer": "转院/转科协助",
+    "critical_notice": "病危或病重通知",
+    "urgent_consent": "紧急知情同意签署",
+    "standby_request": "院方要求家属待命",
+    "document_handling": "手续办理（支持远程 presence=remote）"
+  },
+  "issuer_kinds": ["hospital", "witness"],
   "sample": {
     "case_id": "CASE-ICU-12D",
     "stay": {
       "ward": "ICU",
       "days": 12
     },
-    "event": {
-      "kind": "urgent_consent",
-      "source": "hospital_notice",
-      "occurred_at": "2025-06-03T02:14:00+08:00"
-    }
+    "patient_ref": "PAT-DEMO-7788",
+    "subject_pseudonym": "FAM-EXAMPLE00000000000000",
+    "windows": {
+      "icu_window": {
+        "start": "2025-06-02T01:20:00+08:00",
+        "end": "2025-06-09T10:00:00+08:00"
+      },
+      "care_window": {
+        "start": "2025-06-02T00:00:00+08:00",
+        "end": "2025-06-10T18:00:00+08:00"
+      }
+    },
+    "events": [
+      {
+        "ref": "EVT-DEMO-01",
+        "kind": "admission",
+        "source": "hospital_admission",
+        "presence": "on_site",
+        "occurred_at": "2025-06-02T01:20:00+08:00"
+      },
+      {
+        "ref": "EVT-DEMO-02",
+        "kind": "critical_notice",
+        "source": "hospital_notice",
+        "presence": "on_site",
+        "occurred_at": "2025-06-03T02:14:00+08:00"
+      },
+      {
+        "ref": "EVT-DEMO-03",
+        "kind": "urgent_consent",
+        "source": "hospital_notice",
+        "presence": "on_site",
+        "occurred_at": "2025-06-03T02:40:00+08:00"
+      },
+      {
+        "ref": "EVT-DEMO-04",
+        "kind": "standby_request",
+        "source": "ward_call",
+        "presence": "on_site",
+        "occurred_at": "2025-06-04T21:00:00+08:00"
+      },
+      {
+        "ref": "EVT-DEMO-05",
+        "kind": "transfer",
+        "source": "transfer_assist",
+        "presence": "on_site",
+        "occurred_at": "2025-06-09T09:30:00+08:00"
+      },
+      {
+        "ref": "EVT-DEMO-06",
+        "kind": "document_handling",
+        "source": "discharge_desk",
+        "presence": "remote",
+        "occurred_at": "2025-06-10T15:00:00+08:00"
+      },
+      {
+        "ref": "EVT-DEMO-07",
+        "kind": "discharge",
+        "source": "hospital_discharge",
+        "presence": "on_site",
+        "occurred_at": "2025-06-10T16:30:00+08:00"
+      }
+    ],
+    "relays": [
+      {
+        "note": "多名亲属轮换：各持本人伪名凭证，就实际承担时段分别申报，同一时段重叠部分挂起待裁定。",
+        "subject_pseudonym": "FAM-EXAMPLE11111111111111",
+        "relationship": "spouse",
+        "cared_slots": [
+          { "start": "2025-06-05T08:00:00+08:00", "end": "2025-06-05T20:00:00+08:00" }
+        ]
+      }
+    ]
   }
 }
