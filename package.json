@@ -6,6 +6,7 @@
   "description": "整理重症救治期间家属待命、文书签署和院外事务的证据时间线。",
   "scripts": {
     "check": "node src/service.js --check",
+    "start": "node src/service.js",
     "test": "node --test"
   }
 }
